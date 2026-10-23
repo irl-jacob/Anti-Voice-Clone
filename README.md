@@ -166,7 +166,7 @@ docker-compose up -d
 
 #### 1. Clone the Repository
 ```bash
-git clone https://github.com/irl-jacob/avc.git
+git clone https://github.com/irl-jacob/Anti-Voice-Clone.git
 cd avc
 ```
 

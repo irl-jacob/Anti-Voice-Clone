@@ -91,7 +91,7 @@ cd frontend && npm run build
 ---
 
 ## Reporting Issues & Requesting Features
-- Use [GitHub Issues](https://github.com/irl-jacob/avc/issues) to report bugs or request features.
+- Use [GitHub Issues](https://github.com/irl-jacob/Anti-Voice-Clone/issues) to report bugs or request features.
 - Please choose the appropriate issue form (`bug_report.yml` or `feature_request.yml`) and include all requested details (OS, Python/Node versions, reproduction steps).
 
 ---
