@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🛡️ AvC — Audio Deepfake & Voice Clone Detector
+# AvC — Audio Deepfake & Voice Clone Detector
 
 ### *Real-Time Telemetry & Neural Defense Against Synthetic Speech Impersonation*
 
@@ -14,21 +14,21 @@
 [![SIH 2026](https://img.shields.io/badge/SIH_2026-Problem_SIH26104-FF6B6B)](https://www.sih.gov.in)
 
 <p align="center">
-  <a href="#-key-features">Key Features</a> •
-  <a href="#-the-threat-landscape">Threat Landscape</a> •
-  <a href="#-system-architecture">Architecture</a> •
-  <a href="#-quick-start">Quick Start</a> •
-  <a href="#-model-weights">Model Weights</a> •
-  <a href="#-api--websocket-reference">API Reference</a> •
-  <a href="#-benchmarks">Benchmarks</a> •
-  <a href="#-contributing">Contributing</a>
+  <a href="#key-features">Key Features</a> •
+  <a href="#the-threat-landscape-why-avc">Threat Landscape</a> •
+  <a href="#system-architecture">Architecture</a> •
+  <a href="#quick-start">Quick Start</a> •
+  <a href="#model-weights--checkpoint-management">Model Weights</a> •
+  <a href="#api--websocket-reference">API Reference</a> •
+  <a href="#evaluation--benchmarks">Benchmarks</a> •
+  <a href="#contributing">Contributing</a>
 </p>
 
 </div>
 
 ---
 
-## 📌 Executive Summary
+## Executive Summary
 
 **AvC** is an enterprise-grade, real-time voice anti-spoofing engine and cybersecurity dashboard engineered to detect AI voice clones and synthetic speech in live audio streams. Built on an **AASIST-v2** (Audio Anti-Spoofing using Integrated Spectro-Temporal Graph Attention Networks) backbone accelerated with **ONNX Runtime**, AvC operates at sub-1.5-second inference latency.
 
@@ -36,13 +36,13 @@ Unlike black-box detectors that output isolated confidence scores, AvC provides 
 
 ---
 
-## 🚨 The Threat Landscape: Why AvC?
+## The Threat Landscape: Why AvC?
 
 AI voice cloning technology has crossed a critical threshold: modern diffusion and neural vocoder architectures require as little as **3 seconds of reference audio** to reproduce an individual's vocal timbre, inflection, and cadence with near-perfect perceptual fidelity.
 
 ### Real-World Incident Vector
 Over compressed, low-bitrate PSTN and VoIP lines (e.g. WhatsApp, cellular), subtle acoustic imperfections are masked, making human discernment practically impossible:
-- **Financial Impersonation**: High-profile incidents in Indore and Hyderabad documented losses exceeding ₹10+ Crores through cloned executive and relative voices.
+- **Financial Impersonation**: High-profile incidents in Indore and Hyderabad documented losses exceeding INR 10+ Crores through cloned executive and relative voices.
 - **Low Compute Barrier**: Modern voice generation models run in milliseconds on consumer GPUs, empowering social engineering at scale.
 - **The Multilingual Gap**: Existing commercial solutions focus almost exclusively on high-resource English datasets, failing to detect artifacts across regional accents and vernacular languages.
 
@@ -50,27 +50,27 @@ Over compressed, low-bitrate PSTN and VoIP lines (e.g. WhatsApp, cellular), subt
 
 ---
 
-## ✨ Key Features
+## Key Features
 
-- **⚡ Sub-1.5s Streaming Inference**: Ingests raw float32 PCM audio in real-time sliding windows (48,000 samples @ 16kHz) via low-overhead WebSockets.
-- **🧠 Spectro-Temporal Graph Attention**: AASIST neural backbone models dependencies across both frequency bands and temporal steps simultaneously to catch synthetic phase discrepancies.
-- **🌐 Multilingual Indic Coverage**: Calibrated across English, Hindi, Tamil, and Telugu speech patterns to eliminate accent bias.
-- **🔍 Visual Explainability Layer**: Generates instantaneous Mel-spectrogram frequency heatmaps with attention overlays over the WebSocket stream.
-- **📈 Stateful Rolling Risk Aggregator**: Uses Redis to smooth transient noise spikes and track multi-window risk momentum without false-positive panic.
-- **💾 Full Audit & Telemetry Database**: Asynchronous PostgreSQL event logging for forensic analysis, audit compliance, and continual model retraining.
-- **💻 Cyberpunk Mission-Control UI**: Responsive React 18 + Tailwind CSS dashboard featuring live waveform visualizers, real-time risk gauges, threat alerts, and file-upload inspection.
+- **Sub-1.5s Streaming Inference**: Ingests raw float32 PCM audio in real-time sliding windows (48,000 samples @ 16kHz) via low-overhead WebSockets.
+- **Spectro-Temporal Graph Attention**: AASIST neural backbone models dependencies across both frequency bands and temporal steps simultaneously to catch synthetic phase discrepancies.
+- **Multilingual Indic Coverage**: Calibrated across English, Hindi, Tamil, and Telugu speech patterns to eliminate accent bias.
+- **Visual Explainability Layer**: Generates instantaneous Mel-spectrogram frequency heatmaps with attention overlays over the WebSocket stream.
+- **Stateful Rolling Risk Aggregator**: Uses Redis to smooth transient noise spikes and track multi-window risk momentum without false-positive panic.
+- **Full Audit & Telemetry Database**: Asynchronous PostgreSQL event logging for forensic analysis, audit compliance, and continual model retraining.
+- **Cyberpunk Mission-Control UI**: Responsive React 18 + Tailwind CSS dashboard featuring live waveform visualizers, real-time risk gauges, threat alerts, and file-upload inspection.
 
 ---
 
-## 🏗️ System Architecture
+## System Architecture
 
 ```mermaid
 flowchart TD
     subgraph Client["Frontend Client (React + Tailwind)"]
-        MIC["🎙️ Live Microphone Stream"]
-        UPLOAD["📁 Audio File Upload (.wav/.mp3)"]
-        UI["📊 Telemetry Dashboard & Threat Gauge"]
-        HEATMAP["🔥 Explainability Spectrogram View"]
+        MIC["Live Microphone Stream"]
+        UPLOAD["Audio File Upload (.wav/.mp3)"]
+        UI["Telemetry Dashboard & Threat Gauge"]
+        HEATMAP["Explainability Spectrogram View"]
     end
 
     subgraph Gateway["FastAPI Async Gateway"]
@@ -86,8 +86,8 @@ flowchart TD
     end
 
     subgraph State["State & Persistence"]
-        REDIS[("⚡ Redis (Session Rolling Window)")]
-        PG[("🐘 PostgreSQL (Audit Logs & Telemetry)")]
+        REDIS[("Redis (Session Rolling Window)")]
+        PG[("PostgreSQL (Audit Logs & Telemetry)")]
     end
 
     MIC -->|Raw PCM Bytes| WS
@@ -143,7 +143,7 @@ sequenceDiagram
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 - **Python 3.10+**
@@ -205,7 +205,7 @@ npm run dev
 
 ---
 
-## 📦 Model Weights & Checkpoint Management
+## Model Weights & Checkpoint Management
 
 The neural inference backbone requires `ai/best_model.onnx` (~1.2 GB), an optimized export of the AASIST spectro-temporal graph attention network fine-tuned on Indic speech.
 
@@ -223,7 +223,7 @@ python scripts/fetch_weights.py
 
 ---
 
-## 📡 API & WebSocket Reference
+## API & WebSocket Reference
 
 ### 1. Real-Time Streaming WebSocket
 - **Endpoint**: `ws://localhost:8000/ws/audio`
@@ -275,7 +275,7 @@ python scripts/fetch_weights.py
 
 ---
 
-## 📊 Evaluation & Benchmarks
+## Evaluation & Benchmarks
 
 The AvC detection engine is evaluated against gold-standard audio deepfake benchmarks and real-world spoof corpora:
 
@@ -289,7 +289,7 @@ The AvC detection engine is evaluated against gold-standard audio deepfake bench
 
 ---
 
-## 📁 Repository Layout
+## Repository Layout
 
 ```text
 avc/
@@ -337,7 +337,7 @@ avc/
 
 ---
 
-## 🧪 Testing & Quality Assurance
+## Testing & Quality Assurance
 
 AvC includes automated test coverage across inference logic and WebSocket architecture:
 
@@ -351,7 +351,7 @@ cd frontend && npm run build
 
 ---
 
-## 🗺️ Roadmap & Milestones
+## Roadmap & Milestones
 
 - [x] AASIST-v2 ONNX pipeline with sub-400ms chunk latency.
 - [x] Real-time WebSocket streaming with Redis rolling risk smoothing.
@@ -363,25 +363,25 @@ cd frontend && npm run build
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions from researchers and developers! Please read our [Contributing Guide](CONTRIBUTING.md) and review our [Code of Conduct](CODE_OF_CONDUCT.md) before submitting pull requests.
 
 ---
 
-## 🔒 Security & Vulnerability Reporting
+## Security & Vulnerability Reporting
 
 Please review our [Security Policy](SECURITY.md) for information on coordinated vulnerability disclosure.
 
 ---
 
-## 📄 License
+## License
 
 AvC is released under the [Apache License 2.0](LICENSE).
 
 ---
 
-## 📚 Acknowledgments & Citations
+## Acknowledgments & Citations
 
 If you use AvC in academic research or industrial cybersecurity solutions, please cite:
 
