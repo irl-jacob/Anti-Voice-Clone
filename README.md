@@ -4,7 +4,6 @@
 
 ### *Real-Time Telemetry & Neural Defense Against Synthetic Speech Impersonation*
 
-[![CI](https://github.com/irl-jacob/avc/actions/workflows/ci.yml/badge.svg)](https://github.com/irl-jacob/avc/actions)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](https://python.org)
 [![FastAPI](https://img.shields.io/badge/Backend-FastAPI-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
@@ -294,8 +293,6 @@ The AvC detection engine is evaluated against gold-standard audio deepfake bench
 ```text
 avc/
 ├── .github/
-│   ├── workflows/
-│   │   └── ci.yml               # Automated GitHub Actions test & build pipeline
 │   ├── ISSUE_TEMPLATE/          # Structured issue report templates
 │   └── PULL_REQUEST_TEMPLATE.md # PR submission checklist
 ├── ai/
